@@ -1,0 +1,339 @@
+# Program 1
+# Author: Zabet, William
+# Reviewed by: Ajayi, Oluwasegun E.
+#
+#
+#
+#1. Start at at memory[300]
+#1.a F400 (opcode IN) loads GPR0 w/ first value in the keyboard (the number to find). 
+0300 F400
+0301 0300
+#
+#1.b F500 (opcode IN) loads GPR1 w/ the next value inputted from the keyboard (1st number to compare)
+0302 F500
+0303 0302
+#
+#1.c 6940 (opcode gprToixr) moves contents of GPR1 to IXR1
+0304 6940
+0305 0304
+#
+#1.d 7440 (opcode abs) gets the abs value of gpr0 - gpr1 and returns it to gpr1
+0306 7440
+0307 0306
+#
+#1.e 6DC0 (opcode gprTogpr) moves the contents of gpr1 to gpr3
+0308 6DC0
+0309 0308
+#
+#2. the words for parts 2-20 act as a loop and will be described below. 
+#
+#2.a F500 (opcode IN) loads GPR1 w/ the next value inputted from the keyboard (2/20th number to compare)
+030A F500
+030B 030A
+#
+#2.b 6D80 (opcode gprToGPR) moves the value of gpr1 to gpr2
+030C 6D80
+030D 030C
+#
+#2.c 7440 (opcode abs) gets the abs value of gpr0 - gpr1 and returns it to gpr1
+030E 7440
+030F 030E
+#
+#2.d 71C0 (opcode less) if the contents of gpr1 is less than gpr3 (if the absolute value of the next number is less than the previous, than
+# the contents of gpr1 get moved to gpr3. If they aren't less, than the pc gets incremented once which skips the next word. 
+0310 71C0
+0311 0310
+#
+#2.e 6A40 (opcode gprToixr) if the contents at gpr1 were less than gpr3, than the contents of gpr2 (the current number being compared) gets moved to ixr1
+# this part gets skipped over if the contents at gpr1 are greater than gpr3. at the end of the code. The number that is closest to the search value will be 
+# displayed in IXR1, and the difference between the search value and the closest value will be displayed in GPR2.
+0312 6A40
+0313 0312
+#
+#3.
+0314 F500
+0315 0314
+#
+0316 6D80
+0317 0316
+#
+0318 7440
+0319 0318
+#
+031A 71C0
+031B 031A
+#
+031C 6A40
+031D 031C
+#
+#4.
+031E F500
+031F 031E
+#
+0320 6D80
+0321 0320
+#
+0322 7440
+0323 0322
+#
+0324 71C0
+0325 0324
+#
+0326 6A40
+0327 0326
+#
+#5.
+0328 F500
+0329 0328
+#
+032A 6D80
+032B 032A
+#
+032C 7440
+032D 032C
+#
+032E 71C0
+032F 032E
+#
+0330 6A40
+0331 0330
+#
+#6.
+0332 F500
+0333 0332
+#
+0334 6D80
+0335 0334
+#
+0336 7440
+0337 0336
+#
+0338 71C0
+0339 0338
+#
+033A 6A40
+033B 033A
+#
+#7.
+033C F500
+031D 033C
+#
+033E 6D80
+033F 033E
+#
+0340 7440
+0341 0340
+#
+0342 71C0
+0343 0342
+#
+0344 6A40
+0345 0344
+#
+#8.
+0346 F500
+0347 0346
+#
+0348 6D80
+0349 0348
+#
+034A 7440
+034B 034A
+#
+034C 71C0
+034D 034C
+#
+034E 6A40
+034F 034E
+#
+#9.
+0350 F500
+0351 0350
+#
+0352 6D80
+0353 0352
+#
+0354 7440
+0355 0354
+#
+0356 71C0
+0357 0356
+#
+0358 6A40
+0359 0358
+#
+#10.
+035A F500
+035B 035A
+#
+035C 6D80
+035D 035C
+#
+035E 7440
+035F 035E
+#
+0360 71C0
+0361 0360
+#
+0362 6A40
+0363 0362
+#
+#11.
+0364 F500
+0365 0364
+#
+0366 6D80
+0367 0366
+#
+0368 7440
+0369 0368
+#
+036A 71C0
+036B 036A
+#
+036C 6A40
+036D 036C
+#
+#12.
+036E F500
+036F 036E
+#
+0370 6D80
+0371 0370
+#
+0372 7440
+0373 0372
+#
+0374 71C0
+0375 0374
+#
+0376 6A40
+0377 0376
+#
+#13.
+0378 F500
+0379 0378
+#
+037A 6D80
+037B 037A
+#
+037C 7440
+037D 037C
+#
+037E 71C0
+037F 037E
+#
+0380 6A40
+0381 0380
+#
+#14.
+0382 F500
+0383 0382
+#
+0384 6D80
+0385 0384
+#
+0386 7440
+0387 0386
+#
+0388 71C0
+0389 0388
+#
+038A 6A40
+038B 038A
+#
+#15.
+038C F500
+038D 038C
+#
+038E 6D80
+038F 038E
+#
+0390 7440
+0391 0390
+#
+0392 71C0
+0393 0392
+#
+0394 6A40
+0395 0394
+#
+#16.
+0396 F500
+0397 0396
+#
+0398 6D80
+0399 0398
+#
+039A 7440
+039B 039A
+#
+039C 71C0
+039D 039C
+#
+039E 6A40
+039F 039E
+#
+#17.
+03A0 F500
+03A1 03A0
+#
+03A2 6D80
+03A3 03A2
+#
+03A4 7440
+03A5 03A4
+#
+03A6 71C0
+03A7 03A6
+#
+03A8 6A40
+03A9 03A8
+#
+#18.
+03AA F500
+03AB 03AA
+#
+03AC 6D80
+03AD 03AC
+#
+03AE 7440
+03AF 03AE
+#
+03B0 71C0
+03B1 03B0
+#
+03B2 6A40
+03B3 03B2
+#
+#19.
+03B4 F500
+03B5 03B4
+#
+03B6 6D80
+03B7 03B6
+#
+03B8 7440
+03B9 03B8
+#
+03BA 71C0
+03BB 03BA
+#
+03BC 6A40
+03BD 03BC
+#
+#20.
+03BE F500
+03BF 03BE
+#
+03C0 6D80
+03C1 03C0
+#
+03C2 7440
+03C3 03C2
+#
+03C4 71C0
+03C5 03C4
+#
+03C6 6A40
+03C7 03C6
